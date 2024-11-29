@@ -25,6 +25,8 @@ function App() {
     .sort(() => Math.random() -0.5)
     .map((card) => ({...card,id: Math.random()}))
 
+    setChoiceOne(null)
+    setChoiceTwo(null)
     setCards(shuffleCards)
     setTurns(0)
   }
@@ -64,6 +66,12 @@ function App() {
     setDisabled(false)
   }
 
+  //start a new game automatically
+
+  useEffect(()=>{
+    shuffleCards()
+  },[])
+
   return (
     <div className="App">
       <h1 style={{color:'blue'}}>Memory Magic</h1>
@@ -80,7 +88,7 @@ function App() {
           />
         ))}
       </div>
-
+      <p>Total Turns : {turns}</p>
     </div>
   );
 }
